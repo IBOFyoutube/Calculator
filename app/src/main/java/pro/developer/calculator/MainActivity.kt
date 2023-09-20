@@ -89,18 +89,15 @@ class MainActivity : AppCompatActivity() {
 
         // button larni ishga tushurish
         b1.setOnClickListener {
-            // on below line we are appending
-            // the expression to our text view.
+
             tvMain.text = (tvMain.text.toString() + "1")
         }
         b2.setOnClickListener {
-            // on below line we are appending
-            // the expression to our text view.
+
             tvMain.text = (tvMain.text.toString() + "2")
         }
         b3.setOnClickListener {
-            // on below line we are appending
-            // the expression to our text view.
+
             tvMain.text = (tvMain.text.toString() + "3")
         }
         b4.setOnClickListener {
@@ -140,8 +137,6 @@ class MainActivity : AppCompatActivity() {
             tvMain.text = (tvMain.text.toString() + ")")
         }
         bpi.setOnClickListener {
-            // on clicking on pi button we are adding
-            // pi value as 3.142 to our current value.
             tvMain.text = (tvMain.text.toString() + "3.142")
             tvsec.text = (bpi.text.toString())
         }
