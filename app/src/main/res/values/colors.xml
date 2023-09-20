@@ -18,7 +18,10 @@
     <color name="colorAccent">#c0ca33</color>
 
 
+    <color name="yellow">#FF5000</color>
+    <color name="blac_shade_1">#0E2433</color>
     <color name="black_shade_1">#0E2433</color>
     <color name="black_shade_2">#1C4966</color>
-    <color name="carrotColor">#FF5000</color>
+    <color name="black_shade_3">#22252D</color>
+
 </resources>
