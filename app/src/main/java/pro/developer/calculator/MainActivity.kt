@@ -1,10 +1,14 @@
 package pro.developer.calculator
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -47,6 +51,12 @@ class MainActivity : AppCompatActivity() {
     lateinit var bdot: Button
     lateinit var bdiv: Button
 
+    // maxsus
+    lateinit var showSignf: ImageView
+    lateinit var signfCal1: LinearLayout
+    lateinit var signfCal2: LinearLayout
+
+    @SuppressLint("MissingInflatedId", "ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -86,6 +96,25 @@ class MainActivity : AppCompatActivity() {
         bequal = findViewById(R.id.bequal)
         bdot = findViewById(R.id.bdot)
         bdiv = findViewById(R.id.bdiv)
+        //maxsus chaqirish
+        showSignf=findViewById(R.id.showSignificant)
+        signfCal1=findViewById(R.id.significant_lyt1)
+        signfCal2=findViewById(R.id.significant_lyt2)
+
+
+        // maxsus ishga tushurish
+        showSignf.setOnClickListener {
+
+            if (signfCal1.visibility==View.VISIBLE){
+                signfCal1.visibility=View.GONE
+                signfCal2.visibility=View.GONE
+                showSignf.setImageResource(R.drawable.ic_visible)
+            }else {
+                signfCal1.visibility=View.VISIBLE
+                signfCal2.visibility=View.VISIBLE
+                showSignf.setImageResource(R.drawable.ic_disable)
+            }
+        }
 
         // button larni ishga tushurish
         b1.setOnClickListener {
@@ -182,13 +211,22 @@ class MainActivity : AppCompatActivity() {
                 val result = r.toString()
                 tvMain.setText(result)
             }
+            if (tvMain.text=="" && tvsec.text==""){
+                Toast.makeText(this, "Please enter a valid number..", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this,MainActivity::class.java))
+            }
         }
         bequal.setOnClickListener {
+            if (tvMain.text=="" && tvsec.text==""){
+                Toast.makeText(this, "Please enter a valid number..", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this,MainActivity::class.java))
+            }
             val str: String = tvMain.text.toString()
             val result: Double = evaluate(str)
             val r = result.toString()
             tvMain.setText(r)
             tvsec.text = str
+
         }
         bac.setOnClickListener {
             tvMain.setText("")
@@ -213,6 +251,10 @@ class MainActivity : AppCompatActivity() {
 
                 tvsec.text = "$d²"
             }
+            if (tvMain.text=="" && tvsec.text==""){
+                Toast.makeText(this, "Please enter a valid number..", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this,MainActivity::class.java))
+            }
         }
         bfact.setOnClickListener {
             if (tvMain.text.toString().isEmpty()) {
@@ -224,6 +266,10 @@ class MainActivity : AppCompatActivity() {
                 val fact: Int = factorial(value)
                 tvMain.setText(fact.toString())
                 tvsec.text = "$value`!"
+            }
+            if (tvMain.text=="" && tvsec.text==""){
+                Toast.makeText(this, "Please enter a valid number..", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this,MainActivity::class.java))
             }
 
         }
